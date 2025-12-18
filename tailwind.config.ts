@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
+        body: ['Roboto', 'sans-serif'],
+        headline: ['Bebas Neue', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
@@ -93,6 +93,11 @@ export default {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
+      dropShadow: {
+        'glow-primary': '0 0 10px hsl(var(--primary))',
+        'glow-accent': '0 0 10px hsl(var(--accent))',
+        'glow-electric': '0 0 10px hsl(var(--glow))',
+      }
     },
   },
   plugins: [require('tailwindcss-animate')],

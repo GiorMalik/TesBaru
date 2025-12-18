@@ -1,0 +1,75 @@
+{
+  "Navigation": {
+    "home": "Beranda",
+    "reviews": "Ulasan",
+    "admin": "Dasbor Admin",
+    "login": "Masuk",
+    "register": "Daftar",
+    "logout": "Keluar"
+  },
+  "HomePage": {
+    "heroTitle": "Sewa Mobil Premium di Bali",
+    "heroSubtitle": "Jelajahi pulau dewata dengan gaya dan kenyamanan. Pesan mobil impian Anda hari ini.",
+    "heroButton": "Lihat Armada Kami",
+    "carListTitle": "Armada Kami"
+  },
+  "CarCard": {
+    "capacity": "{count, plural, one {# orang} other {# orang}}",
+    "transmission_manual": "Manual",
+    "transmission_automatic": "Otomatis",
+    "price_per_day": "/ hari",
+    "book_now": "Pesan Sekarang"
+  },
+  "ReviewsPage": {
+    "title": "Kata Pelanggan Kami",
+    "subtitle": "Kisah nyata dari para klien kami yang berharga.",
+    "leaveReviewTitle": "Tinggalkan Ulasan",
+    "leaveReviewSubtitle": "Bagikan pengalaman Anda dengan kami. Anda harus masuk untuk mengirim.",
+    "ratingLabel": "Peringkat",
+    "commentLabel": "Komentar",
+    "submitButton": "Kirim Ulasan",
+    "loginToReview": "Silakan masuk untuk meninggalkan ulasan."
+  },
+  "Auth": {
+    "loginTitle": "Selamat Datang Kembali",
+    "loginSubtitle": "Masuk untuk mengakses akun Anda dan memesan kendaraan.",
+    "registerTitle": "Buat Akun",
+    "registerSubtitle": "Bergabunglah dengan kami dan mulailah perjalanan Anda di Bali.",
+    "emailLabel": "Email",
+    "passwordLabel": "Kata Sandi",
+    "nameLabel": "Nama Lengkap",
+    "loginButton": "Masuk",
+    "registerButton": "Daftar",
+    "loginLink": "Sudah punya akun? Masuk",
+    "registerLink": "Belum punya akun? Daftar"
+  },
+  "Admin": {
+    "title": "Dasbor Admin",
+    "description": "Kelola semua mobil sewaan di sini.",
+    "addCar": "Tambah Mobil",
+    "editCar": "Ubah Mobil",
+    "deleteCar": "Hapus Mobil",
+    "deleteConfirmationTitle": "Apakah Anda yakin?",
+    "deleteConfirmationMessage": "Tindakan ini tidak dapat dibatalkan. Ini akan menghapus mobil secara permanen.",
+    "cancel": "Batal",
+    "confirm": "Konfirmasi",
+    "carNameLabel": "Nama Mobil",
+    "carImageLabel": "URL Gambar",
+    "carCapacityLabel": "Kapasitas (orang)",
+    "carTransmissionLabel": "Transmisi",
+    "carPriceLabel": "Harga per hari ($)",
+    "carAvailableLabel": "Tersedia untuk disewa",
+    "save": "Simpan",
+    "transmission_manual": "Manual",
+    "transmission_automatic": "Otomatis",
+    "table_header_name": "Nama",
+    "table_header_capacity": "Kapasitas",
+    "table_header_transmission": "Transmisi",
+    "table_header_price": "Harga",
+    "table_header_availability": "Ketersediaan",
+    "table_header_actions": "Tindakan"
+  },
+  "Footer": {
+    "copy": "GiorBaliTour. Hak cipta dilindungi undang-undang."
+  }
+}
