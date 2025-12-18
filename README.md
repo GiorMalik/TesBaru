@@ -2,8 +2,8 @@
 
 *   **Nama Proyek:** GiorBaliTour
 *   **Deskripsi:** Website rental mobil di Bali dengan durasi 10 jam, termasuk sopir dan bensin. Review ditujukan untuk layanan secara keseluruhan.
-*   **Teknologi:** Next.js 18, TypeScript, Tailwind CSS, Cloudflare D1, Drizzle ORM, Auth.js, next-intl.
-*   **Fitur Utama:** Landing Page, Daftar Mobil, Detail Mobil, Review Layanan (Login untuk posting), Dashboard Admin Tersembunyi, Multi-bahasa (8 bahasa).
+*   **Teknologi:** Next.js 18, TypeScript, Tailwind CSS, Cloudflare D1, Drizzle ORM, Auth.js.
+*   **Fitur Utama:** Landing Page, Daftar Mobil, Detail Mobil, Review Layanan (Login untuk posting), Dashboard Admin Tersembunyi.
 
 ---
 
@@ -15,7 +15,7 @@
 > "AI, kita akan membangun website rental mobil untuk Bali bernama 'GiorBaliTour'. Proyek ini akan langsung di-deploy ke **Cloudflare Pages** dalam mode produksi. Gunakan **Next.js 18 dengan App Router**, **TypeScript**, dan **Tailwind CSS**.
 >
 > 1.  Buatkan struktur proyek Next.js baru.
-> 2.  Instal dependensi berikut: `drizzle-orm`, `@cloudflare/workers-types`, `auth.js`, `next-intl`, `bcryptjs`.
+> 2.  Instal dependensi berikut: `drizzle-orm`, `@cloudflare/workers-types`, `auth.js`, `bcryptjs`.
 > 3.  Buat file `wrangler.toml` di root proyek dengan konfigurasi berikut:
 >     ```toml
 >     name = "giorbali-tour"
@@ -82,22 +82,20 @@
 
 ---
 
-### **Langkah 3: Setup Internasionalisasi, Autentikasi & Styling**
+### **Langkah 3: Setup Autentikasi & Styling**
 
-**Tujuan:** Menerapkan i18n, autentikasi, dan tema visual.
+**Tujuan:** Menerapkan autentikasi dan tema visual.
 
 **Prompt untuk AI:**
-> "Lakukan tiga tugas berikut:
-> 1.  **Internasionalisasi:** Konfigurasi `next-intl` untuk 8 bahasa (en, id, zh, ko, ar, tr, ru, pt) dengan **bahasa default (`en`) di path `/`**. Buat file terjemahan dasar dan komponen `LanguageSwitcher` dengan dukungan RTL.
-> 2.  **Autentikasi:** Buat sistem autentikasi menggunakan Auth.js dengan halaman `/login` dan `/register`.
-> 3.  **Styling:** Terapkan **tema global untuk GiorBaliTour**:
+> "Lakukan dua tugas berikut:
+> 1.  **Autentikasi:** Buat sistem autentikasi menggunakan Auth.js dengan halaman `/login` dan `/register`.
+> 2.  **Styling:** Terapkan **tema global untuk GiorBaliTour**:
 >     - Warna utama: **Hijau** (misal: `green-600`).
 >     - Efek visual: **Neon Shadow** (misal: `shadow-green-500/50 shadow-2xl`).
 >     - Tema: **Modern** dengan font bersih dan `rounded-lg`.
 >     - Terapkan tema ini pada halaman login dan register."
 
 **Hasil yang Diharapkan:**
-*   Sistem i18n yang berfungsi.
 *   Fitur login/register.
 *   Tampilan dengan tema hijau dan neon shadow yang konsisten.
 
@@ -157,7 +155,7 @@
 
 **Prompt untuk AI:**
 > "Buatkan komponen `Header` dan `Footer` yang konsisten untuk semua halaman.
-> - **Header:** Logo 'GiorBaliTour', navigasi utama (Home, Cars, About, Contact), `LanguageSwitcher`, dan kondisional tombol Login/Profile.
+> - **Header:** Logo 'GiorBaliTour', navigasi utama (Home, Cars, About, Contact), dan kondisional tombol Login/Profile.
 > - **Footer:** Tampilkan informasi kontak berikut dan link navigasi:
 >   - **Email:** giorginomalik@gmail.com
 >   - **WhatsApp:** +6285854965523
