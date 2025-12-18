@@ -24,6 +24,7 @@ async function checkAdmin() {
     if (!session?.user || session.user?.role !== 'admin') {
         throw new Error("Tidak diizinkan");
     }
+    return session;
 }
 
 export async function createOrUpdateCar(values: z.infer<typeof CarSchema>) {

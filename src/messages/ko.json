@@ -1,0 +1,12 @@
+{
+  "Header": {
+    "home": "집",
+    "cars": "자동차",
+    "about": "회사 소개",
+    "contact": "연락처",
+    "login": "로그인"
+  },
+  "Footer": {
+    "contactInfo": "연락처 정보"
+  }
+}

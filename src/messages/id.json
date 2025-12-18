@@ -1,0 +1,12 @@
+{
+  "Header": {
+    "home": "Beranda",
+    "cars": "Mobil",
+    "about": "Tentang Kami",
+    "contact": "Kontak",
+    "login": "Masuk"
+  },
+  "Footer": {
+    "contactInfo": "Informasi Kontak"
+  }
+}

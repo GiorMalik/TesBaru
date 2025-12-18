@@ -4,9 +4,8 @@ import { z } from "zod";
 import { db } from "./db";
 import { users, reviews } from "./db/schema";
 import bcrypt from "bcryptjs";
-import { AuthError } from "next-auth";
-import { signIn } from "@/auth";
 import { revalidatePath } from "next/cache";
+import { signIn, signOut } from "@/auth";
 
 const RegisterSchema = z.object({
   email: z.string().email({ message: "Email tidak valid." }),
@@ -41,36 +40,6 @@ export async function register(values: z.infer<typeof RegisterSchema>) {
   return { success: "Registrasi berhasil!" };
 }
 
-export async function login(values: z.infer<typeof z.object({ email: z.string().email(), password: z.string().min(1) })>) {
-    const validatedFields = z.object({ email: z.string().email(), password: z.string().min(1) }).safeParse(values);
-
-    if (!validatedFields.success) {
-        return { error: "Input tidak valid!" };
-    }
-
-    const { email, password } = validatedFields.data;
-
-    try {
-        await signIn("credentials", {
-            email,
-            password,
-            redirectTo: "/",
-        });
-    } catch (error) {
-        if (error instanceof AuthError) {
-            switch (error.type) {
-                case "CredentialsSignin":
-                    return { error: "Email atau password salah." };
-                default:
-                    return { error: "Terjadi kesalahan." };
-            }
-        }
-        throw error;
-    }
-    return { success: "Login berhasil!" };
-}
-
-
 const ReviewSchema = z.object({
   comment: z.string().min(10, { message: "Komentar minimal 10 karakter." }),
   rating: z.coerce.number().min(1).max(5),
@@ -98,4 +67,25 @@ export async function submitReview(values: z.infer<typeof ReviewSchema>) {
     console.error(error);
     return { error: "Gagal mengirim ulasan." };
   }
+}
+
+const LoginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(1),
+});
+
+export async function login(values: z.infer<typeof LoginSchema>) {
+    const validatedFields = LoginSchema.safeParse(values);
+
+    if (!validatedFields.success) {
+        throw new Error("Input tidak valid");
+    }
+
+    const { email, password } = validatedFields.data;
+
+    await signIn("credentials", { email, password, redirectTo: "/" });
+}
+
+export async function logout() {
+    await signOut();
 }

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -18,6 +19,7 @@ const LoginSchema = z.object({
 });
 
 export default function LoginPage() {
+  const router = useRouter();
   const [error, setError] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
 
@@ -29,9 +31,10 @@ export default function LoginPage() {
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     setError("");
     startTransition(() => {
-      login(values).then((data) => {
-        setError(data?.error);
-      });
+      login(values).catch(() => {
+        // Since next-auth throws an error on failure, we catch it here.
+        setError("Email atau password salah.");
+      })
     });
   };
 

@@ -1,0 +1,12 @@
+{
+  "Header": {
+    "home": "Home",
+    "cars": "Cars",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login"
+  },
+  "Footer": {
+    "contactInfo": "Contact Info"
+  }
+}

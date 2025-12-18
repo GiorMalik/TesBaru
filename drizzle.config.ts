@@ -1,12 +1,14 @@
-import { defineConfig } from 'drizzle-kit';
 
-export default defineConfig({
+import { type Config } from 'drizzle-kit';
+
+export default {
   schema: './src/lib/db/schema.ts',
   out: './drizzle',
   dialect: 'sqlite',
-  driver: 'd1',
+  driver: 'better-sqlite', // Corrected from 'better-sqlite3'
   dbCredentials: {
-    wranglerConfigPath: './wrangler.toml',
-    dbName: 'tesbaru',
+    url: './sqlite.db', // Path to your local database file
   },
-});
+  verbose: true,
+  strict: true,
+} satisfies Config;

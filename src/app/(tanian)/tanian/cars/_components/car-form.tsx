@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useTransition } from "react";
 import {
   Pencil,
-  PlusCircle,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -29,7 +28,7 @@ const CarSchema = z.object({
 
 type Car = z.infer<typeof CarSchema>;
 
-export function CarForm({ car }: { car?: Car }) {
+export function CarForm({ car }: { car?: Car & {id: string} }) {
   const [isOpen, setIsOpen] = useState(car ? false : true);
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
@@ -55,7 +54,10 @@ export function CarForm({ car }: { car?: Car }) {
         setError(result.error);
       } else {
         setIsOpen(false);
-        form.reset(values);
+        // Don't reset if it's a new car form, so it disappears
+        if (car) {
+          form.reset(values);
+        }
       }
     });
   };
@@ -66,6 +68,11 @@ export function CarForm({ car }: { car?: Car }) {
         <Pencil className="h-4 w-4" />
       </Button>
     );
+  }
+
+  // Hide the "Add New" form after successful submission
+  if (!car && form.formState.isSubmitSuccessful) {
+    return null;
   }
 
   return (
@@ -99,11 +106,11 @@ export function CarForm({ car }: { car?: Car }) {
             <Label>Transmisi</Label>
             <div className="flex gap-4 mt-2">
                 <div className="flex items-center gap-2">
-                    <input type="radio" id="manual" value="manual" {...form.register("transmission")} className="accent-primary" />
+                    <input type="radio" id="manual" value="manual" {...form.register("transmission")} defaultChecked={form.getValues("transmission") === "manual"} className="accent-primary" />
                     <Label htmlFor="manual">Manual</Label>
                 </div>
                 <div className="flex items-center gap-2">
-                    <input type="radio" id="automatic" value="automatic" {...form.register("transmission")} className="accent-primary"/>
+                    <input type="radio" id="automatic" value="automatic" {...form.register("transmission")} defaultChecked={form.getValues("transmission") === "automatic"} className="accent-primary"/>
                     <Label htmlFor="automatic">Automatic</Label>
                 </div>
             </div>
@@ -113,19 +120,29 @@ export function CarForm({ car }: { car?: Car }) {
           <Textarea id="description" {...form.register("description")} className="bg-gray-900"/>
         </div>
         <div className="flex items-center space-x-2">
-            <Checkbox id="isAvailable" {...form.register("isAvailable")} defaultChecked={car?.isAvailable ?? true}/>
-            <label
+            <Controller
+                control={form.control}
+                name="isAvailable"
+                render={({ field }) => (
+                    <Checkbox
+                        id="isAvailable"
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                    />
+                )}
+            />
+            <Label
                 htmlFor="isAvailable"
                 className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
                 Tersedia (Tampilkan di website)
-            </label>
+            </Label>
         </div>
 
 
         {error && <p className="text-sm text-red-500">{error}</p>}
         <div className="flex justify-end gap-2">
-            {car && <Button type="button" variant="ghost" onClick={() => setIsOpen(false)}>Batal</Button>}
+            {(car || !form.formState.isSubmitSuccessful) && <Button type="button" variant="ghost" onClick={() => car ? setIsOpen(false) : form.reset()}>Batal</Button>}
             <Button type="submit" disabled={isPending}>
             {isPending ? "Menyimpan..." : (car ? "Simpan Perubahan" : "Tambah Mobil")}
             </Button>

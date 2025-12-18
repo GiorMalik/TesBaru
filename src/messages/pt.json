@@ -1,0 +1,12 @@
+{
+  "Header": {
+    "home": "Início",
+    "cars": "Carros",
+    "about": "Sobre nós",
+    "contact": "Contato",
+    "login": "Entrar"
+  },
+  "Footer": {
+    "contactInfo": "Informações de contato"
+  }
+}

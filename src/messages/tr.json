@@ -1,0 +1,12 @@
+{
+  "Header": {
+    "home": "Ana Sayfa",
+    "cars": "Arabalar",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "login": "Giriş Yap"
+  },
+  "Footer": {
+    "contactInfo": "İletişim Bilgileri"
+  }
+}

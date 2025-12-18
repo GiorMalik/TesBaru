@@ -1,0 +1,12 @@
+{
+  "Header": {
+    "home": "家",
+    "cars": "汽车",
+    "about": "关于我们",
+    "contact": "联系",
+    "login": "登录"
+  },
+  "Footer": {
+    "contactInfo": "联系方式"
+  }
+}

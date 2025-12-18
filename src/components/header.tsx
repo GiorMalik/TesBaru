@@ -1,44 +1,12 @@
+"use client"
+
 import Link from "next/link";
-import { auth, signOut } from "@/auth";
-import { Button } from "./ui/button";
-
-async function UserButton() {
-  const session = await auth();
-  if (!session?.user) {
-    return (
-      <Button asChild>
-        <Link href="/login">Login</Link>
-      </Button>
-    );
-  }
-
-  return (
-    <div className="flex items-center gap-4">
-      <span className="hidden sm:inline">
-        Halo, {session.user.name?.split(" ")[0]}
-      </span>
-      <form
-        action={async () => {
-          "use server";
-          await signOut();
-        }}
-      >
-        <Button variant="outline" type="submit">
-          Logout
-        </Button>
-      </form>
-       {/* @ts-ignore */}
-      {session.user.role === 'admin' && (
-        <Button asChild variant="secondary">
-          <Link href="/tanian/cars">Dashboard</Link>
-        </Button>
-      )}
-    </div>
-  );
-}
-
+import { useSession } from "next-auth/react";
+import { UserButton } from "./user-button";
 
 export function Header() {
+  const { data: session } = useSession();
+
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/cars", label: "Daftar Mobil" },
@@ -64,7 +32,7 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-4">
-          <UserButton />
+          <UserButton session={session} />
         </div>
       </div>
     </header>
