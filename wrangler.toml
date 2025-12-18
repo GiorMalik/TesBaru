@@ -1,0 +1,8 @@
+name = "giorbali-tour"
+compatibility_date = "2024-05-24"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "tesbaru"
+database_id = "463b2dc3-5ae2-4a9e-9ed9-03f3f0f2db1c"
